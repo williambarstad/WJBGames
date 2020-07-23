@@ -1,0 +1,124 @@
+﻿@*
+    PlayerLeftView: formats players to the left of the board.
+*@
+
+@model AspNetCoreWebApplication.Models.Player
+
+    <style>
+        #playerbanner {
+            position: fixed;
+            display: none;
+            /*width: 100%;
+            height: 100%;*/
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0,0,0,0.5);
+            z-index: 2;
+            cursor: pointer;
+        }
+
+        #playerbannertext {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 50px;
+            color: Purple;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+        }
+
+        #winner {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            font-size: 50px;
+            color: white;
+            transform: translate(-50%,-50%);
+            -ms-transform: translate(-50%,-50%);
+        }
+
+
+    </style>
+
+<div id="playerbanner">
+    <div class="col-5 p-0">
+        <img src=@Model.PlayerImg class="playerimg rounded-circle" />
+    </div>
+    <div class="col-7 p-0">
+        <div class="row align-items-start mt-2 mb-2">
+            <div class="col-5 pl-0">
+                <div class="playername pokerfont text-left">@Model.PlayerName</div>
+            </div>
+            <div class="col-7">
+                -
+                <div class="stake text-left">$ @Model.Stake.ToString()</div>
+            </div>
+        </div>
+
+        @{
+            string suitstyle = "";
+            string offsetcard = "";
+            string cardback = "cardback";
+            int boardcounter = 0;
+            int pocketcounter = 0;
+
+            List<Card> cards = Model._hand._cardsInHand.OrderBy(x => x.CardRank).Reverse().ToList();
+
+            <div class="row align-items-center">
+
+                @* Put cards in pocket *@
+                <div class="col-6 cardrow">
+                    @foreach (Card card in cards)
+                    {
+                        if (card.IsFaceDown)
+                        {
+                            pocketcounter++;
+                            offsetcard = "carddown-" + pocketcounter.ToString();
+                            <div id="gamecard" class="card gamecard @offsetcard @cardback">
+                                @card.BackSym
+                            </div>
+                        }
+                    }
+                </div>
+
+                @* Put cards on board *@
+                <div class="col-6 cardrow">
+                    @foreach (Card card in cards)
+                    {
+                        if (!card.IsFaceDown)
+                        {
+                            boardcounter++;
+                            offsetcard = "cardup-" + boardcounter.ToString();
+
+                            suitstyle = (card.Suit.Equals(Card.CardSuitValue.Clubs) || card.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds";
+
+                            <div id="gamecard" class="card gamecard @suitstyle @offsetcard">
+                                @card.RankSym
+                                <br />
+                                @card.DisplaySuitSym
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+
+        @{
+            var ranking = Model._hand._handRank + " (" + @Model._hand._handScore.ToString() + ")";
+        }
+        <div class="row pt-2 mt-2">
+            <div class="col handrank text-left pr-0"><p>@ranking</p></div>
+        </div>
+    </div>
+</div>
+<script>
+function on() {
+  document.getElementById("overlay").style.display = "block";
+}
+
+function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+</script>

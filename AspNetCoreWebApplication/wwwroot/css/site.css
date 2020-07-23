@@ -1,37 +1,633 @@
-﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+﻿/*
+    WJB Poker Games CSS
+*/
+
+/*  Poker Fonts  */
+@font-face {
+    font-family: 'PokerKings';
+    src: url('../fonts/PokerKings-Regular.ttf');
 }
 
-/* Wrapping element */
-/* Set some basic padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.pokerfont {
+    font-family: 'PokerKings';
+    letter-spacing: .35em;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
+@font-face {
+    font-family: 'PokerMoney';
+    src: url('../fonts/currencyregular.ttf');
 }
 
-/* Carousel */
-.carousel-caption p {
-    font-size: 20px;
-    line-height: 1.4;
+.pokermoneyfont {
+    font-family: 'PokerMoney';
+    letter-spacing: 1rem;
 }
 
-/* Make .svg files in the carousel display properly in older browsers */
-.carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+.pokermoneyfontsm {
+    font-family: 'PokerMoney';
+    font-size: small;
+    letter-spacing: .25rem;
 }
 
-/* Hide/rearrange for smaller screens */
-@media screen and (max-width: 767px) {
-    /* Hide captions */
-    .carousel-caption {
-        display: none;
+@font-face {
+    font-family: 'HoyleNumbers';
+    src: url('../fonts/HoylePlayingCards.ttf');
+}
+
+.hoylefont {
+    font-family: 'HoyleNumbers';
+    /*letter-spacing: .35em;*/
+}
+
+/*  Board styles */
+#gamecontent {
+}
+
+.felt {
+    color: goldenrod;
+}
+
+
+
+.dealer {
+    color: white;
+}
+
+.burnrow {
+    min-height: 4rem;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.cardrow {
+    min-height: 4rem;
+    display: inline-flex;
+    align-items: flex-end;
+}
+
+.cardrowprime {
+    min-height: 6rem;
+    display: inline-flex;
+    align-items: flex-end !important;
+    margin: auto;
+}
+
+.community {
+    display: inline-flex;
+    align-items: flex-end;
+    /*padding: 4rem;*/
+}
+
+/*
+    hand view styles
+*/
+
+.cardup-1 {
+    margin-left: -.5rem;
+    margin-bottom: .25rem;
+}
+
+.cardup-2 {
+    margin-left: -.5rem;
+    margin-bottom: 0rem;
+}
+
+.cardup-3 {
+    margin-left: -.5rem;
+    margin-bottom: -.25rem;
+}
+
+.cardup-4 {
+    margin-left: -.5rem;
+    margin-bottom: -.5rem;
+}
+
+.cardup-5 {
+    margin-left: -.5rem;
+    margin-bottom: -.75rem;
+}
+
+.cardup-6 {
+    margin-left: -.5rem;
+    margin-bottom: -1rem;
+}
+
+.cardup-7 {
+    margin-left: -.5rem;
+    margin-bottom: -1.25rem;
+}
+
+.carddown-1 {
+    margin-left: -.5rem;
+    margin-bottom: .25rem;
+}
+
+.carddown-2 {
+    margin-left: -.5rem;
+    margin-bottom: 0rem;
+}
+
+.carddown-3 {
+    margin-left: -.5rem;
+    margin-bottom: -.25rem;
+}
+
+.carddown-4 {
+    margin-left: -.5rem;
+    margin-bottom: -.5rem;
+}
+
+.carddown-5 {
+    margin-left: -.5rem;
+    margin-bottom: -.75rem;
+}
+
+.carddown-6 {
+    margin-left: -.5rem;
+    margin-bottom: -1rem;
+}
+
+.carddown-7 {
+    margin-left: -.5rem;
+    margin-bottom: -1.25rem;
+}
+
+/*
+    Card styles
+*/
+#gamecard {
+    min-width: 40px;
+    min-height: 60px;
+    color: none;
+    text-align: center;
+    font-size: large;
+    font-weight: bold;
+    background-color: #ffffff;
+}
+
+.cardback {
+    padding-top: .75rem;
+    background-color: none;
+    background: rgb(255,249,0);
+    /*background: radial-gradient(circle, rgba(255,249,0,1) 2%, rgba(30,195,4,1) 15%, rgba(86,64,255,0.8448275862068966) 28%, rgba(191,68,255,0.7155172413793103) 54%, rgba(255,255,255,1) 100%);*/
+    background: radial-gradient(circle, rgba(255,249,0,1) 10%, rgba(30,195,4,1) 20%, rgba(86,64,255,0.8448275862068966) 100%, rgba(191,68,255,0.7155172413793103) 100%, rgba(255,255,255,1) 100%);
+    color: black;
+    border-color: yellow;
+    font-size: larger;
+    font-weight: bolder;
+}
+
+.heartsdiamonds {
+    color: red;
+    border-color: red;
+}
+
+.clubsspades {
+    color: black;
+    border-color: black;
+}
+
+.cardoffset {
+    margin-left: 1.70rem;
+    margin-top: -3.25rem;
+}
+
+.cardoffsetright {
+    margin-left: -.5rem;
+    margin-bottom: -.25rem;
+}
+
+#gameboard {
+}
+
+.gametitle {
+    min-height: 6rem;
+}
+
+.playerrow {
+}
+
+.playercell {
+    border: 1px solid goldenrod;
+    border-radius: 2rem;
+    height: 10rem;
+    margin: .25rem 0;
+}
+
+.primeplayercell {
+    border: 1px solid goldenrod;
+    border-radius: 2rem;
+    max-height: 12rem;
+    margin: .25rem 0;
+}
+
+.playerimg {
+    height: 10rem;
+    padding-left: 0px;
+    padding-right: 0px;
+    border: solid 3px gold;
+}
+
+.playername {
+    color: gold;
+    font-size: larger;
+}
+
+.stake {
+    color: red;
+    font-family: 'PokerMoney';
+    font-size: medium;
+    font-weight: bold;
+}
+
+.betcol {
+}
+
+.betcell {
+    font-family: PokerMoney;
+    font-weight: bolder;
+    font-size: large;
+    letter-spacing: .5rem;
+    min-height: 10rem;
+    align-content: center;
+    margin: auto;
+    padding: 1rem;
+}
+
+.burnpile {
+    justify-content: center;
+}
+
+.gametablecell {
+    padding: 3rem;
+}
+
+.thepot {
+    font-family: 'PokerMoney';
+    font-size: xx-large;
+    color: goldenrod;
+    min-height: 9rem;
+    justify-content: center;
+    padding-top: 5rem;
+}
+
+.gameturn {
+    border-radius: 1rem;
+    width: -webkit-fill-available;
+    min-height: 12rem;
+    color: green;
+    background-color: black;
+}
+
+.handrank {
+    color: goldenrod;
+    font-size: small;
+}
+
+#playerbet0 {
+    display: grid;
+    text-align: center;
+}
+
+.playerbet0text {
+    padding-top: 6rem;
+    padding-left: 1rem;
+}
+
+#playerbet1 {
+}
+
+#playerbet2 {
+}
+
+#playerbet3 {
+}
+
+#playerbet4 {
+}
+
+#playerbet5 {
+}
+
+#playerbet6 {
+}
+
+/* Player Control Box (pcb-)*/
+
+#betcontrol {
+}
+
+.betcontrolbox {
+}
+
+.pcb-betcol {
+}
+
+.pcb-betrow {
+    min-height: 5rem;
+    font-family: 'Poker Kings';
+    letter-spacing: .1rem;
+    font-size: xx-small;
+}
+
+.pcb-raiserow {
+    min-height: 5rem;
+    font-family: 'Poker Kings';
+    letter-spacing: .1rem;
+    font-size: xx-small;
+}
+
+.pcb-clearrow {
+    color: white;
+    min-height: 5rem;
+    font-family: 'Poker Kings';
+    letter-spacing: .1rem;
+    font-size: xx-small;
+}
+
+    .pcb-clearrow:hover {
+        color: yellow;
     }
+
+.pcb-betbutton {
+    border: 4px inset black;
+    min-height: 2rem;
+    color: black;
+    border-radius: 1rem;
+    background: goldenrod;
+    font-size: x-large;
+    font-weight: bolder;
+}
+
+    .pcb-betbutton:hover {
+        color: goldenrod;
+        background: black;
+        border: 4px inset goldenrod;
+        transition: all 200ms ease-in-out;
+    }
+
+.pcb-thepot {
+    border: 4px outset black;
+    min-height: 2rem;
+    color: black;
+    border-radius: 1rem;
+    background: yellow;
+    font-size: smaller;
+    font-weight: bolder;
+}
+
+    .pcb-thepot:hover {
+        color: yellow;
+        background: black;
+        border: 4px inset yellow;
+        transition: all 200ms ease-in-out;
+    }
+
+.pcb-fold {
+    max-width: 2.5rem;
+    max-height: 11rem;
+    background-color: orangered;
+    border: 4px inset black;
+    border-radius: 1rem;
+    padding: 0;
+    text-align: center;
+    transition: all 200ms ease-in-out;
+    font-size: larger;
+    color: black;
+    font-weight: bolder;
+}
+
+    .pcb-fold:hover {
+        color: orangered;
+        border: 4px inset orangered;
+        background-color: black;
+        /*transform: scale(4) translateX(-100%);*/
+    }
+
+.pcb-foldtext {
+    transform: rotate(90deg);
+    transform-origin: center center 0;
+    padding-left: 3rem;
+    padding-top: 1.3rem;
+}
+
+
+.whitechip {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    font-family: 'PokerMoney';
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(../images/whitechip.svg);
+    background-size: contain;
+    border-radius: 3rem;
+    border: double 6px goldenrod;
+    padding-top: .9rem;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .8s;
+}
+
+    .whitechip:hover {
+        color: white;
+        border: double 6px green;
+        background-color: black;
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+
+.redchip {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    font-family: 'PokerMoney';
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(../images/redchip.svg);
+    background-size: contain;
+    border-radius: 3rem;
+    border: double 6px goldenrod;
+    padding-top: .9rem;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .8s;
+}
+
+    .redchip:hover {
+        color: red;
+        border: double 6px purple;
+        background-color: black;
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+
+.bluechip {
+    display: block;
+    width: 4rem;
+    height: 4rem;
+    font-family: 'PokerMoney';
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    text-align: center;
+    text-decoration: none;
+    background-image: url(../images/bluechip.svg);
+    background-size: contain;
+    border-radius: 3rem;
+    border: double 6px goldenrod;
+    padding-top: .9rem;
+    vertical-align: middle;
+    overflow: hidden;
+    transition: .8s;
+}
+
+    .bluechip:hover {
+        color: dodgerblue;
+        border: double 6px orangered;
+        background-color: black;
+        -webkit-transform: rotateY(360deg);
+        -ms-transform: rotateY(360deg);
+        transform: rotateY(360deg);
+    }
+
+.chipremovered {
+    font-size: .75rem;
+    letter-spacing: 0.1rem;
+    color: red !important;
+}
+
+.chipremoveblue {
+    font-size: .75rem;
+    letter-spacing: 0.1rem;
+    color: dodgerblue !important;
+}
+
+.chipremovewhite {
+    font-size: .75rem;
+    letter-spacing: 0.1rem;
+    color: white !important;
+}
+
+a.chipremovered:hover {
+    font-size: .75rem;
+    color: black !important;
+}
+
+a.chipremoveblue:hover {
+    font-size: .75rem;
+    color: black !important;
+}
+
+a.chipremovewhite:hover {
+    font-size: .75rem;
+    color: black !important;
+}
+
+#currentbetamt {
+    color: white;
+    font-family: PokerMoney;
+    font-size: small;
+}
+
+#currentraiseamt {
+    color: red;
+    font-family: PokerMoney;
+    font-size: small;
+}
+
+
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+    color: #0366d6;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+.border-top {
+    border-top: 1px solid #e5e5e5;
+}
+
+.border-bottom {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+    font-size: 1rem;
+    line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background: -moz-radial-gradient(center, ellipse cover, #11290F 0%, #258020 100%); /* ff3.6+ */
+    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #11290F), color-stop(100%, #258020)); /* safari4+,chrome */
+    background: -webkit-radial-gradient(center, ellipse cover, #11290F 0%, #258020 100%); /* safari5.1+,chrome10+ */
+    background: -o-radial-gradient(center, ellipse cover, #11290F 0%, #258020 100%); /* opera 11.10+ */
+    background: -ms-radial-gradient(center, ellipse cover, #11290F 0%, #258020 100%); /* ie10+ */
+    background: radial-gradient(ellipse at center, #11290F 0%, #258020 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#11290F', endColorstr='#258020',GradientType=1 ); /* ie6-9 */
+    color: #ffffff;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    white-space: nowrap;
+    line-height: 60px; /* Vertically center the text there */
+    color: lightgray;
 }

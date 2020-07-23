@@ -1,0 +1,122 @@
+﻿@*
+    Prime Player View: The PRIME PLAYER is the player at the computer.
+*@
+
+@model AspNetCoreWebApplication.Models.Player
+
+<div class="row primeplayercell">
+    <div class="col-6 px-0">
+        <div class="row">
+            <div class="col-5 d-flex p-0">
+                <div class="row">
+                <img src=@Model.PlayerImg class="playerimg rounded-circle" />
+                </div>
+            </div>
+            <div class="col-7 pl-0">
+                <div class="row align-items-start mt-2 mb-2">
+                    <div class="col-5">
+                        <div class="playername pokerfont text-left">@Model.PlayerName</div>
+                    </div>                    
+                    <div class="col-7">
+                        <div class="stake text-left">$ @Model.Stake.ToString()</div>
+                    </div>
+                </div>
+
+                @{
+                    string suitstyle = "";
+                    string offsetcard = "";
+                    int boardcounter = 0;
+
+                    List<Card> cards = Model._hand._cardsInHand.OrderBy(x => x.CardRank).Reverse().ToList();
+
+                    <div class="row pb-4 mb-2 cardrowprime">
+                        @foreach (Card card in cards)
+                        {
+                            boardcounter++;
+                            offsetcard = "cardup-" + boardcounter.ToString();
+
+                            suitstyle = (card.Suit.Equals(Card.CardSuitValue.Clubs) || card.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds";
+
+                            <div id="gamecard" class="card gamecard @suitstyle @offsetcard">
+                                @card.RankSym
+                                <br />
+                                @card.DisplaySuitSym
+                            </div>
+                        }
+                    </div>
+                }
+
+                @{
+                    var ranking = Model._hand._handRank + " (" + @Model._hand._handScore.ToString() + ")";
+                }
+                <div class="row align-items-end mt-2">
+                    <div class="col handrank text-left pl-0"><p>@ranking</p></div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-6 px-0">
+        <div id="betcontrol" class="row betcontrolbox">
+            <div class="col-2 mt-1 pcb-betcol">
+                <div class="row pcb-betrow">
+                    <div class="pokerfont">Current Bet</div>
+                    <div id="currentbetamt">
+                        $0
+                    </div>
+                </div>
+                <div class="row pcb-raiserow">
+                    <div class="pokerfont">Raise Amt</div>
+                    <div id="currentraiseamt">
+                        $0
+                    </div>
+                </div>
+                <div class="row pcb-clearrow">
+                    <a class="pcb-clearrow">Clear Raise</a>                    
+                </div>
+            </div>
+            <div class="col-8 mr-1">
+                <div class="row">
+                    <div class="col pcb-betbutton pokerfont pt-1 my-1 text-center">
+                        Bet
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col pcb-thepot pokerfont pt-1 my-1 text-center">
+                        Bet The Pot <span class="pokermoneyfontsm">($0000)</span>
+                    </div>
+                </div>
+                <div class="row m-auto">
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="whitechip">25</div>
+                        </div>
+                        <div class="row mt-2 pl-2">
+                            <a class="chipremovewhite pokerfont">Remove</a>
+                        </div>
+                    </div>
+                    <div class="col-4 ">
+                        <div class="row ">
+                            <div class="redchip">50</div>
+                        </div>
+                        <div class="row mt-2 pl-2">
+                            <a class="chipremovered pokerfont">Remove</a>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="row">
+                            <div class="bluechip">100</div>
+                        </div>
+                        <div class="row mt-2 pl-2">
+                            <a class="chipremoveblue pokerfont">Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-2 mt-2 pcb-fold pokerfont">
+                <div class="pcb-foldtext">FOLD</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
