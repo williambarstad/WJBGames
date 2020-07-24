@@ -1,17 +1,8 @@
-﻿@*@{
-        ViewData["Title"] = "Example app";
-    }
-    <a class="twitter-link" href="http://twitter.com/home/?status=I just hosted a website on AWS!"><img src="img/tweet.svg" /></a>
-    <div class="text">
-        <h1>Congratulations!</h1>
-        <h2>@ViewData["Message"]</h2>
-    </div>*@
+﻿@*  /Home/Index/*@
 
 @{
     ViewData["Title"] = "WJB Games Project";
 }
-
-
 
 <div id="gamecontent" class="container felt">
     <div class="text-center">
@@ -28,6 +19,8 @@
         _game.TheTurn();
         _game.TheRiver();
         _game.Showdown();
+
+
     }
     <h3>@_game.GameName</h3>
     <hr style="border-top:5px solid goldenrod;">
@@ -35,18 +28,12 @@
     <div class="container-lg">
         <div class="row">
             <div class="col-lg-3 offset-lg-5 align-self-lg-center">
-                <div class="community">
-                    @foreach (Card card in _game.GameTable.CommunityCards.OrderBy(x => (int)x.CardRank).Reverse())
-                    {
-                        <div id="gamecard" class="card gamecard">
-                            <div class="@((card.Suit.Equals(Card.CardSuitValue.Clubs)||card.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds")">
-                                @card.RankSym
-                                <br />
-                                @card.DisplaySuitSym
-                            </div>
-                        </div>
-                    }
-                </div>
+
+                @{
+                    Html.RenderPartial("CommunityView", _game.GameTable);
+                }
+
+
             </div>
         </div>
     </div>
@@ -72,25 +59,25 @@
                         <h4>@pName </h4>
                         <h5>@playerLabel</h5>
                     </div>
-                    <div class="row cardrow">
-                        <div class="col">
+                    <div class="row">
+                        <div class="col cardrow">
                             @{
+                                int commcounter = 0;
                                 string suitstyle = "";
-                                string offsetcard = "";
+                                string offsetcommcard = "";
+                            }
 
-                                List<Card> card = _game.GamePlayers[i]._hand._cardsInHand.OrderBy(x => (int)x.CardRank).Reverse().ToList();
+                            @foreach (Card commcard in _game.GamePlayers[i]._hand._cardsInHand)
+                            {
+                                commcounter++;
+                                offsetcommcard = "cardup-" + commcounter.ToString();
+                                suitstyle = ((commcard.Suit.Equals(Card.CardSuitValue.Clubs) || commcard.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds");
 
-                                for (int j = 0; j < card.Count; j++)
-                                {
-                                    suitstyle = (card[j].Suit.Equals(Card.CardSuitValue.Clubs) || card[j].Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds";
-                                    if (j == 1) offsetcard = "cardoffset";
-
-                                    <div id="gamecard" class="card gamecard @suitstyle @offsetcard">
-                                        @card[j].RankSym
-                                        <br />
-                                        @card[j].DisplaySuitSym
-                                    </div>
-                                }
+                                <div id="gamecard" class="card gamecard @suitstyle @offsetcommcard " alt="@commcard.DisplayName">
+                                    @commcard.RankSym
+                                    <br />
+                                    @commcard.DisplaySuitSym
+                                </div>
                             }
                         </div>
                     </div>
