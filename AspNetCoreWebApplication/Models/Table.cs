@@ -30,7 +30,7 @@ namespace AspNetCoreWebApplication.Models
         {
             //  PRIME PLAYER: Human is player 0
             TablePlayers.Add(new Player(this, "Bill", false));
-            TablePlayers[0].SetPlayerImg("..\\images\\bill.jpg");
+            TablePlayers[0].SetPlayerImg("images\\bill.jpg");
 
             //  other virtual players
             for (int i = 0; i < Buddies.Length; i++)
@@ -38,7 +38,7 @@ namespace AspNetCoreWebApplication.Models
                 try
                 {
                     VirtualPlayer vp = new VirtualPlayer(this, Buddies[i]);
-                    vp.SetPlayerImg("..\\images\\" + Buddies[i] + ".jpg");
+                    vp.SetPlayerImg("images\\" + Buddies[i] + ".jpg");
                     TablePlayers.Add(vp);
                 }
                 catch (System.Exception)
