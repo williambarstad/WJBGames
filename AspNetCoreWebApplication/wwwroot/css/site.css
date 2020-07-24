@@ -236,8 +236,9 @@
 .stake {
     color: red;
     font-family: 'PokerMoney';
-    font-size: medium;
-    font-weight: bold;
+    font-size: smaller;
+    font-weight: 300;
+    letter-spacing: .25rem;
 }
 
 .betcol {
@@ -264,11 +265,12 @@
 
 .thepot {
     font-family: 'PokerMoney';
-    font-size: xx-large;
+    font-size: large;
     color: goldenrod;
     min-height: 9rem;
     justify-content: center;
     padding-top: 5rem;
+    letter-spacing: .25rem;
 }
 
 .gameturn {
