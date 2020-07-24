@@ -25,7 +25,7 @@
 
 .pokermoneyfontsm {
     font-family: 'PokerMoney';
-    font-size: small;
+    font-size: smaller;
     letter-spacing: .25rem;
 }
 
@@ -160,7 +160,7 @@
     min-height: 60px;
     color: none;
     text-align: center;
-    font-size: large;
+    font-size: small;
     font-weight: bold;
     background-color: #ffffff;
 }
@@ -236,8 +236,9 @@
 .stake {
     color: red;
     font-family: 'PokerMoney';
-    font-size: medium;
-    font-weight: bold;
+    font-size: smaller;
+    font-weight: 300;
+    letter-spacing: .25rem;
 }
 
 .betcol {
@@ -264,11 +265,12 @@
 
 .thepot {
     font-family: 'PokerMoney';
-    font-size: xx-large;
+    font-size: large;
     color: goldenrod;
     min-height: 9rem;
     justify-content: center;
     padding-top: 5rem;
+    letter-spacing: .25rem;
 }
 
 .gameturn {
@@ -292,6 +294,8 @@
 .playerbet0text {
     padding-top: 6rem;
     padding-left: 1rem;
+    font-size:larger;
+    letter-spacing: .25rem;
 }
 
 #playerbet1 {
@@ -355,7 +359,7 @@
     color: black;
     border-radius: 1rem;
     background: goldenrod;
-    font-size: x-large;
+    font-size: large;
     font-weight: bolder;
 }
 
