@@ -22,19 +22,19 @@
                 </div>
             </div>
             <div class="row ">
-                <div class="col-4">
-                    <div class="row playercell">
+                <div class="col-4">                    
+                    <div class="row playercell @((Model.GamePlayers[3].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerLeftView", Model.GamePlayers[3]);
                         }
 
                     </div>
-                    <div class="row playercell">
+                    <div class="row playercell @((Model.GamePlayers[2].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerLeftView", Model.GamePlayers[2]);
                         }
                     </div>
-                    <div class="row playercell">
+                    <div class="row playercell @((Model.GamePlayers[1].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerLeftView", Model.GamePlayers[1]);
                         }
@@ -74,18 +74,18 @@
                     </div>
                 </div>
                 <div class="col-4">
-                    <div class="row playercell">
+                    <div class="row playercell @((Model.GamePlayers[4].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerRightView", Model.GamePlayers[4]);
                         }
 
                     </div>
-                    <div class="row playercell">
+                    <div class="row playercell @((Model.GamePlayers[5].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerRightView", Model.GamePlayers[5]);
                         }
                     </div>
-                    <div class="row playercell">
+                    <div class="row playercell @((Model.GamePlayers[6].IsWinner) ? "winner" : "")">
                         @{
                             Html.RenderPartial("PlayerRightView", Model.GamePlayers[6]);
                         }
