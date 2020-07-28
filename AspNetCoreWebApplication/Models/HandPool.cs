@@ -157,7 +157,7 @@ namespace AspNetCoreWebApplication.Models
 
         public void SetPool(List<Card> pool)
         {
-            // set and sort by rank
+            // set cardsinpool and sort by rank
             cardsInPool = pool;
             sortByCardRank();
 
