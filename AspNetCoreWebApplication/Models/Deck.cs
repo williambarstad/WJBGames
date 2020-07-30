@@ -1,11 +1,4 @@
-﻿
-/*
- * 
- *  Convert this to a singleton in the system, one deck for the table 
- * 
- */
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 

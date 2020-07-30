@@ -21,10 +21,17 @@
             PlayerTable = table;
             PlayerName = newPlayerName;
             IsVirtual = bvirtual;
-            StartNewHand();
+            SitAtTable();
         }
-
-        public void StartNewHand()
+                
+        /// <summary>
+        /// Method: SitAtTable()
+        /// Description: This function is called by the Table
+        ///     * Instantiate the player hand object
+        ///     * Assign player positions at the table, relevant during betting
+        /// 
+        /// </summary>
+        private void SitAtTable()
         {
             _hand = new Hand(PlayerTable);
             var playercount = PlayerTable.TablePlayers.Count;
@@ -44,6 +51,7 @@
             }
         }
 
+        // TODO: Create a HandPool class interface?
         public HandPool GetBesthand()
         {
             return _hand.bestHandInPool;

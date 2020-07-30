@@ -31,12 +31,12 @@ namespace AspNetCoreWebApplication.Models
         }
 
         private int CardId { get; set; }                        //  id from 1-52
-        private int Rank { get; set; }                          //  numeric rank
+        private int Rank { get; set; }                          //  numeric rank, 1-13
         public CardSuitValue Suit { get; private set; }
         public CardRankValue CardRank { get; private set; }
-        public string DisplayName { get; private set; }
+        public string DisplayName { get; set; }
 
-        public string RankSym { get; private set; }             //  A, K, Q, J, T, etc.
+        public string RankSym { get; set; }             //  A, K, Q, J, T, etc.
         public string SuitSym { get; private set; }             //  c, d, h, s
         public string DisplaySuitSym { get; private set; }
         public string BackSym { get; private set; } = "§";
