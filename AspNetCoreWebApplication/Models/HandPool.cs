@@ -7,7 +7,7 @@ namespace AspNetCoreWebApplication.Models
 {
     public class HandPool : IComparable<HandPool>
     {
-        public List<Card> cardsInPool { get; private set; }
+        private List<Card> cardsInPool { get; set; }
         protected Tuple<Card.CardRankValue, Card.CardRankValue, Card.CardRankValue, Card.CardRankValue, Card.CardRankValue> _handTuple;
         public PokerHands _poolHandRank { get; private set; } = PokerHands.Unknown;
         public int _poolScore { get; private set; } = 0;
@@ -18,12 +18,11 @@ namespace AspNetCoreWebApplication.Models
             SetPool(pool);
         }
 
-        public void EvaluateHighestRank()
+        private void EvaluateHighestRank()
         {
             _poolHandRank = PokerHands.Nothing;
             _poolScore = 0;
             sortByCardRank();
-
 
             //  TWOPAIR and PAIR and HIGHCARD
             if (getGroupByRankCount(2) == 2)
@@ -155,7 +154,7 @@ namespace AspNetCoreWebApplication.Models
             }
         }
 
-        public void SetPool(List<Card> pool)
+        private void SetPool(List<Card> pool)
         {
             // set cardsinpool and sort by rank
             cardsInPool = pool;
@@ -165,11 +164,6 @@ namespace AspNetCoreWebApplication.Models
             _handTuple = new Tuple<Card.CardRankValue, Card.CardRankValue, Card.CardRankValue, Card.CardRankValue, Card.CardRankValue>(
                 cardsInPool[0].CardRank, cardsInPool[1].CardRank, cardsInPool[2].CardRank, cardsInPool[3].CardRank, cardsInPool[4].CardRank);
             EvaluateHighestRank();
-        }
-
-        public List<Card> GetPool()
-        {
-            return cardsInPool;
         }
 
         private void sortByCardRank(bool desc = true)
@@ -232,7 +226,12 @@ namespace AspNetCoreWebApplication.Models
             return (setCount == 1) ? (int)cardsInPool.GroupBy(c => c.CardRank).Last(g => g.Count() == 3).Key : 0;
         }
 
-
+        public List<Card> GetPool()
+        {
+            return cardsInPool;
+        }
+        
+        // TODO: Suspect THIS is where "Rank Tie Logic" is failing.
         int IComparable<HandPool>.CompareTo(HandPool other)
         {
             // Compare hand ranks, then compare scores, then individual cards

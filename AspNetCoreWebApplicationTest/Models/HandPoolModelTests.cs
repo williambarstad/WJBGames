@@ -1,7 +1,6 @@
-﻿using AspNetCoreWebApplication.Controllers;
-using AspNetCoreWebApplication.Models;
+﻿using AspNetCoreWebApplication.Models;
+using System.Collections.Generic;
 using Xunit;
-using Microsoft.AspNetCore.Mvc;
 
 namespace AspNetCoreWebApplication.Models.Tests
 {
@@ -10,25 +9,34 @@ namespace AspNetCoreWebApplication.Models.Tests
         [Fact()]
         public void HandPool_HandPoolTest()
         {
-            Assert.True(false, "This test needs an implementation");
-        }
+            List<Card> _pool = new List<Card>();
+            _pool.Add(new Card(13));
+            _pool.Add(new Card(12));
+            _pool.Add(new Card(11));
+            _pool.Add(new Card(10));
+            _pool.Add(new Card(9));
 
-        [Fact()]
-        public void EvaluateHighestRank_HandPoolTest()
-        {
-            Assert.True(false, "This test needs an implementation");
-        }
+            HandPool testPool = new HandPool(_pool);
 
-        [Fact()]
-        public void SetPool_HandPoolTest()
-        {
-            Assert.True(false, "This test needs an implementation");
+            Assert.NotNull(testPool);
         }
 
         [Fact()]
         public void GetPool_HandPoolTest()
         {
-            Assert.True(false, "This test needs an implementation");
+            List<Card> _pool = new List<Card>();
+            List<Card> _poola;
+            _pool.Add(new Card(13));
+            _pool.Add(new Card(12));
+            _pool.Add(new Card(11));
+            _pool.Add(new Card(10));
+            _pool.Add(new Card(9));
+
+            HandPool testPool = new HandPool(_pool);
+
+            _poola = testPool.GetPool();
+
+            Assert.Equal(_pool, _poola);
         }
     }
 }
