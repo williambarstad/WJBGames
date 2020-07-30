@@ -43,6 +43,7 @@ namespace AspNetCoreWebApplication.Models
                 {
                     VirtualPlayer vp = new VirtualPlayer(this, Buddies[i]);
                     vp.SetPlayerImg("images\\" + Buddies[i].ToLower() + ".jpg");
+
                     TablePlayers.Add(vp);
                 }
                 catch (System.Exception)
