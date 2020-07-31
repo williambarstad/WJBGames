@@ -15,8 +15,8 @@ This is the flagship game set we are using to create our framework. What we lear
   * 1-7 real players, with 1-6 optional virtual players
   * Configurable betting styles of the virtual players with 6 basic styles to choose from or use as templates for further customization
   * Poker Games for the first release will include:
-    -Texas Hold 'Em (Pot Limit) Tournament
-    -Combo Game, dealer's chioce, game choices will include:
+    *Texas Hold 'Em (Pot Limit) Tournament
+    *Combo Game, dealer's chioce, game choices will include:
       * 5-Card Draw
       * Omaha (H/L)
       * Sixty-Three (H/L)
@@ -31,5 +31,6 @@ Technical Details
   * Git/AWS CodeStar for DevOps
   
   
-**Are you in?
+  
+ARE YOU IN?
 
