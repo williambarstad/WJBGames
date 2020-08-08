@@ -30,6 +30,6 @@ Technical Details
   * Signalr/WebRTC/Node.js for the A/V server
   * Git/AWS CodeStar for DevOps
   
-**ARE YOU IN?
+ARE YOU IN?
   
 Copyright (c) 2020 William Barstad All Rights Reverved.
