@@ -1,0 +1,208 @@
+﻿@model WJBPoker.Models.Table
+
+@{
+    /*
+     *  THIS NEEDS TO BE REFACTORED TO USE Models.Table
+    */
+
+    ViewData["Title"] = "Texas Hold Em";
+
+    //Model.MuckAndReset();
+    
+    //this.Model.StartGame();
+    
+    //Model.TableGame.TheFlop();
+    //Model.TableGame.TheTurn();
+    //Model.TableGame.TheRiver();
+    //Model.TableGame.Showdown();
+    
+}
+
+<style>
+    .actButton {
+        font-family: 'Poker Kings';
+        color: gold;
+        background: transparent;
+        border: 1px solid goldenrod;
+        border-radius: 2rem;
+    }
+
+    #game-accordion {
+        font-family: 'Poker Kings';
+        text-decoration: none;
+    }
+
+    .ga-card {
+        color: white;
+        background-color: darkgreen;
+        border: 1px solid goldenrod;
+        text-decoration: none;
+    }
+
+    .ga-card-header-label {
+        color: goldenrod;
+        text-decoration: none;
+    }
+
+        .ga-card-header-label:hover {
+            color: white;
+        }
+
+    .ga-card-body {
+        font-family: initial;
+    }
+</style>
+
+<div id="gamecontent">
+    <div id="gameboard">
+        <div class="container">
+            <div class="row gametitle">
+                <div class="col-12 text-center">
+                    <h1 class="display-3 pokerfont">@ViewData["Title"]</h1>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-4">
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerLeftView", Model.TablePlayers[3]);
+                        }
+
+                    </div>
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerLeftView", Model.TablePlayers[2]);
+                        }
+                    </div>
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerLeftView", Model.TablePlayers[1]);
+                        }
+                    </div>
+                </div>
+                <div class="col-1 betcol">
+                    <div id="playerbet3" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                    <div id="playerbet2" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                    <div id="playerbet1" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                </div>
+                <div class="col-2">
+                    @{
+                        Html.RenderPartial("CommunityView", Model);
+                    }
+                    <div class="row m-0 text-center thepot align-items-center">
+                        <p>$ 1000</p>
+                    </div>
+                    <div id="playerbet0" class="row betcell p-0">
+                        <h6 class="playerbet0text">$0</h6>
+                    </div>
+                </div>
+                <div class="col-1 betcol">
+                    <div id="playerbet4" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                    <div id="playerbet5" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                    <div id="playerbet6" class="row align-middle betcell">
+                        <h6>$0</h6>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerRightView", Model.TablePlayers[4]);
+                        }
+
+                    </div>
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerRightView", Model.TablePlayers[5]);
+                        }
+                    </div>
+                    <div class="row playercell">
+                        @{
+                            Html.RenderPartial("PlayerRightView", Model.TablePlayers[6]);
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="row ">
+                <div class="col-4">
+                    <div class="row gameturn text-center m-1 p-2">
+                        <h4>Game Turn</h4>
+                    </div>
+                </div>
+                <div class="col-8 px-0">
+                    @{
+                        Html.RenderPartial("PrimePlayerView", Model.TablePlayers[0]);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="actButtons" class="container p-1">
+    <hr />
+    <div class="row text-center">
+        <div class="col"><input id="Shuffle" type="submit" value="Shuffle" runat="server" onclick="Shuffle" class="actButton" /></div>
+        <div class="col"><input id="PreFlop" type="button" value="Pre Flop" runat="server" onclick="Model.PreFlop()" class="actButton" /></div>
+        <div class="col"><input id="TheFlop" type="button" value="The Flop" runat="server" onclick="Model.TheFlop()" class="actButton" /></div>
+        <div class="col"><input id="TheTurn" type="button" value="The Turn" runat="server" onclick="Model.TheTurn()" class="actButton" /></div>
+        <div class="col"><input id="TheRiver" type="button" value="The River" runat="server" onclick="Model.TheRiver()" class="actButton" /></div>
+        <div class="col"><input id="Showdown" type="button" value="Showdown" runat="server" onclick="Model.Showdown()" class="actButton" /></div>
+        <div class="col"><input id="Muck" type="button" value="Muck" runat="server" onclick="Model.MuckAndReset()" class="actButton" /></div>
+    </div>
+    <hr />
+</div>
+<div id="game-accordion" class=" text-decoration-none collpased">
+    <div class="card ga-card">
+        <div class="card-header" id="game-history">
+            <h5 class="mb-0">
+                <button class="btn btn-link btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                    <div class="ga-card-header-label text-decoration-none">Game History</div>
+                </button>
+            </h5>
+        </div>
+
+        <div id="collapseOne" class="collapse" aria-labelledby="game-history" data-parent="#game-accordion">
+            <div class="card-body ga-card-body">
+                <textarea class="gamehistory w-100">Game History</textarea>
+            </div>
+        </div>
+    </div>
+    <div class="card ga-card">
+        <div class="card-header" id="game-rules">
+            <h5 class="mb-0">
+                <button class="btn btn-link btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <div class="ga-card-header-label text-decoration-none">HOUSE RULES - Texas Hold 'Em'</div>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="game-rules" data-parent="#game-accordion">
+            <div class="card-body ga-card-body">
+                These are the Rules.
+            </div>
+        </div>
+    </div>
+    <div class="card ga-card">
+        <div class="card-header" id="virtual-player">
+            <h5 class="mb-0">
+                <button class="btn btn-link btn-lg btn-block collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                    <div class="ga-card-header-label text-decoration-none">Virtual Player Theories</div>
+                </button>
+            </h5>
+        </div>
+        <div id="collapseThree" class="collapse" aria-labelledby="virtual-player" data-parent="#game-accordion">
+            <div class="card-body ga-card-body">
+                Many tons of horsehit go here.
+            </div>
+        </div>
+    </div>
+</div>
+

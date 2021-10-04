@@ -1,0 +1,42 @@
+﻿@using WJBPoker.Models
+@*
+    Partial View
+    /Shared/CommunityView
+*@
+@{
+    int commcounter = 0;
+    int burncounter = 0;
+    string suitstyle = "";
+    string offsetcommcard = "";
+    string offsetburncard = "";
+}
+
+<div class="row burnpile">
+    <div class="cardrow">
+        @foreach (Card burncard in Model.Muck)
+        {
+            burncounter++;
+            offsetburncard = "carddown-" + burncounter.ToString();
+            <div id="gamecard" class="card cardback @offsetburncard">
+                @burncard.BackSym
+            </div>
+
+        }
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="community">
+        @foreach (Card commcard in Model.CommunityCards)
+        {
+            commcounter++;
+            offsetcommcard = "cardup-" + commcounter.ToString();
+            suitstyle = ((commcard.Suit.Equals(Card.CardSuitValue.Clubs) || commcard.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds");
+
+            <div id="gamecard" class="card gamecard @suitstyle @offsetcommcard " alt="@commcard.DisplayName">
+                @commcard.RankSym
+                <br />
+                @commcard.DisplaySuitSym
+            </div>
+        }
+    </div>
+</div>

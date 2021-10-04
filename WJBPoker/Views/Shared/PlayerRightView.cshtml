@@ -1,0 +1,74 @@
+﻿@*
+    PlayerRightView: formats players to the right of the board.
+*@
+
+@model WJBPoker.Models.Player
+
+<div class="col-7">
+    <div class="row mt-2 mb-2">
+        <div class="col-7">
+            <div class="stake text-left">$ @Model.Stake.ToString()</div>
+        </div>
+        <div class="col-5 pl-0">
+            <div class="playername pokerfont text-right">@Model.PlayerName</div>
+        </div>
+    </div>
+
+    @{
+        string suitstyle = "";
+        string offsetcard = "";
+        string cardback = "cardback";
+        int boardcounter = 0;
+        int pocketcounter = 0;
+
+        List<Card> cards = Model._hand._cardsInHand.OrderBy(x => x.CardRank).Reverse().ToList();
+
+        <div class="row align-items-center pl-2">
+
+            @* Put cards on board *@
+            <div class="col-6 cardrow pr-0">
+                @foreach (Card card in cards)
+                {
+                    if (!card.IsFaceDown)
+                    {
+                        boardcounter++;
+                        offsetcard = "cardup-" + boardcounter.ToString();
+
+                        suitstyle = (card.Suit.Equals(Card.CardSuitValue.Clubs) || card.Suit.Equals(Card.CardSuitValue.Spades)) ? "clubsspades" : "heartsdiamonds";
+
+                        <div id="gamecard" class="card @suitstyle @offsetcard">
+                            @card.RankSym
+                            <br />
+                            @card.DisplaySuitSym
+                        </div>
+                    }
+                }
+            </div>
+
+            @* Put cards in pocket *@
+            <div class="col-6 cardrow">
+                @foreach (Card card in cards)
+                {
+                    if (card.IsFaceDown)
+                    {
+                        pocketcounter++;
+                        offsetcard = "carddown-" + pocketcounter.ToString();
+                        <div id="gamecard" class="card @offsetcard @cardback">
+                            @card.BackSym
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    }
+
+    @{
+        var ranking = Model._hand._handRank + " (" + @Model._hand._handScore.ToString() + ")";
+    }
+    <div class="row mt-2">        
+        <div class="col handrank text-right px-0"><p>@ranking</p></div>
+    </div>
+</div>
+<div class="col-5 d-flex pl-0">
+    <img src=@Model.PlayerImg class="playerimg rounded-circle" />
+</div>
