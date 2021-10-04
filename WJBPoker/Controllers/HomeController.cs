@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
 
-namespace AspNetCoreWebApplication.Controllers
+namespace WJBPoker.Controllers
 {
     public class HomeController : Controller
     {
