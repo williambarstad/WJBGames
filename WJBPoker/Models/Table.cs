@@ -28,6 +28,10 @@ namespace WJBPoker.Models
 
         public Table()
         {
+            // TODO DESIGN: Once the login and landing page are created,
+            //  this will be modified to gather the security tokens from the front end 
+            //  in the creation of the player object.
+
             //  PRIME PLAYER: Human is player 0
             TablePlayers.Add(new Player(this, "Bill", false));
             TablePlayers[0].SetPlayerImg("images\\bill.jpg");
@@ -38,7 +42,8 @@ namespace WJBPoker.Models
                 try
                 {
                     VirtualPlayer vp = new VirtualPlayer(this, Buddies[i]);
-                    vp.SetPlayerImg("images\\" + Buddies[i] + ".jpg");
+                    vp.SetPlayerImg("images\\" + Buddies[i].ToLower() + ".jpg");
+
                     TablePlayers.Add(vp);
                 }
                 catch (System.Exception)
@@ -56,9 +61,6 @@ namespace WJBPoker.Models
 
         public void StartGame()
         {
-            //  Seat Players
-            TablePlayers.ForEach(x => x.StartNewHand());
-
             //  Start new game
             TableGame = new Game(this);
 

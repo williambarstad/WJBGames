@@ -78,8 +78,9 @@
     /*padding: 4rem;*/
 }
 
-.winner{
-    color:fuchsia;
+.winner {
+    color: fuchsia !important;
+    border-color: fuchsia !important;
 }
 
 /*
