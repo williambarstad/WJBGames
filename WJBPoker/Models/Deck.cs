@@ -29,9 +29,9 @@ namespace WJBPoker.Models
                     var newCard = new Card(i);
                     Cards.Add(newCard);
                 }
-                catch (System.Exception e)
+                catch (System.Exception)
                 {
-                    throw e;
+                    throw;
                 }
             }
 
@@ -71,6 +71,7 @@ namespace WJBPoker.Models
 
         public void ResetDeck()
         {
+            // TODO: Rethink ResetDeck
             NextCard = 0;
         }
 
