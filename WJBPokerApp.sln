@@ -4,6 +4,8 @@ VisualStudioVersion = 16.0.30309.148
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WJBPoker", "WJBPoker\WJBPoker.csproj", "{635915B2-60D2-4024-BDDE-81963C1D19DF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WJBPokerTests", "WJBPokerTests\WJBPokerTests.csproj", "{9BA2365D-3F9D-4CB9-B6E0-CC9D36E85883}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +16,10 @@ Global
 		{635915B2-60D2-4024-BDDE-81963C1D19DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{635915B2-60D2-4024-BDDE-81963C1D19DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{635915B2-60D2-4024-BDDE-81963C1D19DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BA2365D-3F9D-4CB9-B6E0-CC9D36E85883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9BA2365D-3F9D-4CB9-B6E0-CC9D36E85883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9BA2365D-3F9D-4CB9-B6E0-CC9D36E85883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9BA2365D-3F9D-4CB9-B6E0-CC9D36E85883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
